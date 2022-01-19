@@ -4,13 +4,78 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
+  <title>Monster attack</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
   <div id="app">    
+    <div class="container">
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-6 text-center"><h4>You</h4></div>
+        <div class="col-6 text-center"><h4>Monster</h4></div>
+      </div>
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" :style="{ width : userHealth + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="progress">
+            
+            <div class="progress-bar bg-success" role="progressbar" :style="{ width : monsterHealth + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-6">{{userHealth}}%</div>
+        <div class="col-6">{{monsterHealth}}%</div>
+      </div>
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="card">
+            <div class="card-body">
+              <button v-show="!gameStarted" @click="startGame" type="button" class="btn btn-success">New game</button>
+              
+              <span v-show="gameStarted">
+                <button @click="attackToMonster" type="button" class="btn btn-danger">Attack</button>
+                <button @click="specialAttackToMonster" type="button" class="btn btn-warning">Special attack</button>
+                <button type="button" class="btn btn-success">First aid</button>
+                <button type="button" class="btn btn-light">Give Up</button>              
+              </span>
 
-  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="card">
+            <div class="card-body">
+              <div class="alert alert-primary alert-sm" role="alert" style="padding:1px;margin:2px;">
+                This is a primary alert—check it out!
+              </div>
+              <div class="alert alert-danger alert-sm" role="alert" style="padding:1px;margin:2px;">
+                This is a primary alert—check it out!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>
