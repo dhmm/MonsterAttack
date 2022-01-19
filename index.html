@@ -49,7 +49,7 @@
               <span v-show="gameStarted">
                 <button @click="attackToMonster" type="button" class="btn btn-danger">Attack</button>
                 <button @click="specialAttackToMonster" type="button" class="btn btn-warning">Special attack</button>
-                <button type="button" class="btn btn-success">First aid</button>
+                <button @click="getFirstAid" type="button" class="btn btn-success">First aid</button>
                 <button type="button" class="btn btn-light">Give Up</button>              
               </span>
 
@@ -64,12 +64,14 @@
         <div class="col-12 text-center">
           <div class="card">
             <div class="card-body">
-              <div class="alert alert-primary alert-sm" role="alert" style="padding:1px;margin:2px;">
-                This is a primary alert—check it out!
-              </div>
-              <div class="alert alert-danger alert-sm" role="alert" style="padding:1px;margin:2px;">
-                This is a primary alert—check it out!
-              </div>
+              <template v-for="log in logs">              
+                <div v-if="log.attackType == 'player'" class="alert alert-primary alert-sm" role="alert" style="padding:1px;margin:2px;">
+                  {{log.message}} <b>{{log.power}}</b>
+                </div>
+                <div v-else class="alert alert-danger alert-sm" role="alert" style="padding:1px;margin:2px;">
+                  {{log.message}} <b>{{log.power}}</b>
+                </div>
+              </template>
             </div>
           </div>
         </div>
